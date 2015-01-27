@@ -33,6 +33,48 @@ protected:
 	 */
 	virtual void actionThread();
 
+	/**
+	 * For convenience we split our tasks.
+	 * For Bin actions.
+	 */
+	void binAction(const std::string& bin_parameters);
+
+	/**
+	 * For moveto.
+	 */
+	void movetoAction(const std::string& moveto_parameters);
+
+	/**
+	 * For startgui.
+	 */
+	void startguiAction (const std::string& startgui_parameters);
+
+	/**
+	 * For dock.
+	 */
+	void dockAction (const std::string& dock_parameters);
+
+
+	/**
+	 * A Subscriber to the status message.
+	 */
+	ros::Subscriber status_sub_;
+
+	/**
+	 * A Callback for the status.
+	 */
+	void statusCallback(const std_msgs::String::ConstPtr& status_message);
+
+	/**
+	 * A Status message.
+	 */
+	std_msgs::StringConstPtr status_;
+
+	/**
+	 * This functions listens on the status topic with the given prefix.
+	 */
+	void waitForCompletion(const std::string& status_prefix);
+
 public:
 	/**
 	 * Constructor.

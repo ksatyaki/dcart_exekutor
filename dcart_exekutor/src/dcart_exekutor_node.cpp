@@ -21,11 +21,10 @@ int main(int argn, char *args[])
 
 	ros::init(argn, args, "exekutor");
 
-	DcartExekutor DcartCommand("Dcart", "Functions");
-
-	peiskmt_setStringTuple("dcart.functions.23.command", "OFF");
-	peiskmt_setStringTuple("dcart.functions.23.parameters", "-");
-	peiskmt_setStringTuple("dcart.functions.23.state", "IDLE");
+	DcartExekutor moveto("dustcart", "moveto");
+	DcartExekutor bin("dustcart", "bin");
+	DcartExekutor startgui("dustcart", "startgui");
+	DcartExekutor dock("dustcart", "dock");
 
 	struct sigaction sa;
 	memset(&sa, 0, sizeof(sa));
