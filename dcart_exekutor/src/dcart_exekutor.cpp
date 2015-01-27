@@ -36,7 +36,18 @@ void DcartExekutor::actionThread()
 		dockAction(data);
 	else if(action_name_ == "moveto")
 		movetoAction(data);
+	else if(action_name_ == "discharge")
+		garbageAction(data);
 
+}
+
+void DcartExekutor::garbageAction(const std::string& garbage_parameters)
+{
+	std_msgs::String _message;
+	_message.data = "garbage " + garbage_parameters;
+	command_pub_.publish(_message);
+
+	waitForCompletion(_message.data);
 }
 
 void DcartExekutor::dockAction(const std::string& dock_parameters)

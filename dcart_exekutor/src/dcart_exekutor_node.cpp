@@ -25,6 +25,7 @@ int main(int argn, char *args[])
 	DcartExekutor bin("dustcart", "bin");
 	DcartExekutor startgui("dustcart", "startgui");
 	DcartExekutor dock("dustcart", "dock");
+	DcartExekutor garbage ("dustcart", "garbage");
 
 	struct sigaction sa;
 	memset(&sa, 0, sizeof(sa));

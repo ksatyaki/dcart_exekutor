@@ -54,6 +54,10 @@ protected:
 	 */
 	void dockAction (const std::string& dock_parameters);
 
+	/**
+	 * For garbage discharge.
+	 */
+	void garbageAction (const std::string& garbage_parameters);
 
 	/**
 	 * A Subscriber to the status message.
