@@ -36,7 +36,7 @@ void DcartExekutor::actionThread()
 		dockAction(data);
 	else if(action_name_ == "moveto")
 		movetoAction(data);
-	else if(action_name_ == "discharge")
+	else if(action_name_ == "garbage")
 		garbageAction(data);
 
 }
