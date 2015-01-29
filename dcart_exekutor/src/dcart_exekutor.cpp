@@ -103,7 +103,13 @@ void DcartExekutor::waitForCompletion(const std::string& status_prefix)
 			continue;
 		else
 		{
-			size_t statusPosition = status_->data.find(status_prefix + " ") + std::string(status_prefix + " ").size();
+			size_t statusPosition = status_->data.find(status_prefix + " ");
+			size_t statusEndPosition = std::string(status_prefix + " ").size();
+
+			if(statusPosition == std::string::npos)
+				continue;
+
+			statusPosition += statusEndPosition;
 			std::string extractedStatus = status_->data.substr(statusPosition);
 
 			if(extractedStatus.compare("completed") == 0)
