@@ -3,6 +3,8 @@
 namespace exekutor
 {
 
+const int CAM_PEIS_ID = 9898;
+
 DcartExekutor::DcartExekutor(std::string robot_name, std::string action_name):
 		ActionExekutor(robot_name, action_name, false)
 {
@@ -56,7 +58,12 @@ void DcartExekutor::dockAction(const std::string& dock_parameters)
 	_message.data = dock_parameters;
 	command_pub_.publish(_message);
 
-	waitForCompletion(action_name_ + " " + dock_parameters);
+	waitForCompletion(dock_parameters);
+
+	std::string docking_error;
+	ros::param::get("docking_position_error", docking_error);
+
+	peiskmt_setRemoteStringTuple(CAM_PEIS_ID, "dustcart.dockingerror", docking_error.c_str());
 }
 
 void DcartExekutor::movetoAction(const std::string& moveto_parameters)
